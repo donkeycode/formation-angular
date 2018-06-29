@@ -5,6 +5,8 @@
   <img class="logo" src="https://pbs.twimg.com/profile_images/536554033083715584/53H11Q-w_400x400.png">
 </div>
 
-<div *ngFor="let cat of cats; let i = index">
-  <app-cat [url]="cat" (clicked)="imageClicked($event)" [border]="i === 1 ? 'blue' : 'red'"></app-cat>
-</div>
+<ng-template ngFor let-cat [ngForOf]="cats" let-i="index">
+  <app-cat [url]="cat.url" (clicked)="imageClicked($event)" [border]="i === 1 ? 'blue' : 'red'">
+    {{ cat.name }}
+  </app-cat>
+</ng-template>

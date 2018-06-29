@@ -1,5 +1,6 @@
-<div class="img-container" [ngClass]="{'border-red': border === 'red'}" [class.border-blue]="border === 'blue'">
-  <img [src]="url" (click)="imageClicked()">
-
-  <ng-content></ng-content>
-</div>
+<mat-card class="example-card">
+  <img mat-card-image [src]="url" (click)="imageClicked()">
+  <mat-card-content>
+    <ng-content></ng-content>
+  </mat-card-content>
+</mat-card>

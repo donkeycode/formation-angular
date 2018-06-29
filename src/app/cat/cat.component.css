@@ -1,9 +1,7 @@
-.img-container {
+.example-card {
   width: 200px;
   float: left;
-  padding: 20px;
 }
-
-.img-container img {
-  width: 100%;
+.example-header-image {
+  background-size: cover;
 }

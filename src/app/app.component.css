@@ -1,3 +1,5 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 .border-red {
   border: 5px solid #F1415A;
 }

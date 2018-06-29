@@ -5,6 +5,9 @@ import { AppComponent } from './app.component';
 import { CatComponent } from './cat/cat.component';
 import { ColorDirective } from './color.directive';
 
+import { MatButtonModule, MatCheckboxModule } from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -12,7 +15,10 @@ import { ColorDirective } from './color.directive';
     ColorDirective
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,8 +5,6 @@
   <img class="logo" src="https://pbs.twimg.com/profile_images/536554033083715584/53H11Q-w_400x400.png">
 </div>
 
-<app-cat url="https://www.chewy.com/petcentral/wp-content/uploads/2018/05/abyssinian-cat-card.jpg" (clicked)="imageClicked($event)"></app-cat>
-
-<app-cat url="https://www.argospetinsurance.co.uk/assets/uploads/2017/12/cat-pet-animal-domestic-104827.jpeg" (clicked)="imageClicked($event)"></app-cat>
-
-<app-cat url="https://www.bluecross.org.uk/sites/default/files/assets/images/124044lpr.jpg" (clicked)="imageClicked($event)"></app-cat>
+<div *ngFor="let cat of cats; let i = index">
+  <app-cat [url]="cat" (clicked)="imageClicked($event)" [border]="i === 1 ? 'blue' : 'red'"></app-cat>
+</div>

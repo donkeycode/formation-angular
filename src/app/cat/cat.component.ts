@@ -6,8 +6,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./cat.component.css']
 })
 export class CatComponent implements OnInit {
-  @Input() url: string;
+  @Input() url;
   @Output() clicked = new EventEmitter();
+  @Input() border;
 
   constructor() { }
 

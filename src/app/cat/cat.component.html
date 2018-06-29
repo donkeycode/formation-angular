@@ -1,3 +1,3 @@
-<div class="img-container">
+<div class="img-container" [ngClass]="{'border-red': border === 'red'}" [class.border-blue]="border === 'blue'">
   <img [src]="url" (click)="imageClicked()">
 </div>

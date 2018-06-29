@@ -2,7 +2,12 @@
   width: 200px;
   float: left;
   padding: 20px;
-  border: 1px solid #F1415A;
+}
+.border-red {
+  border: 5px solid #F1415A;
+}
+.border-blue {
+  border: 5px solid #0294c6;
 }
 
 .img-container img {

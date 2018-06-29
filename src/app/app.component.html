@@ -9,6 +9,10 @@
   <button mat-raised-button color="primary" (click)="testViewChild()">Test ViewChild</button>
 </div>
 
+<app-cat [url]="dog">
+  Celui là n'est pas un chat
+</app-cat>
+
 <ng-template ngFor let-cat [ngForOf]="cats" let-i="index">
   <app-cat [url]="cat.url" (clicked)="imageClicked($event)" [border]="i === 1 ? 'blue' : 'red'">
     {{ cat.name }}

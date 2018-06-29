@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation, ViewChild } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -23,6 +24,14 @@ export class AppComponent {
       name: 'chat toujours mignon'
     },
   ];
+  dog;
+
+  constructor(private http: HttpClient) {
+    this.http.get('https://dog.ceo/api/breeds/image/random')
+    .subscribe((response) => {
+      this.dog = response['message'];
+    });
+  }
 
   imageClicked(event) {
     console.log(event);

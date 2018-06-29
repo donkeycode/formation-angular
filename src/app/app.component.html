@@ -1,8 +1,12 @@
-<div style="text-align:center">
+<div style="text-align:center" class="logo">
   <h1>
     Welcome to {{ title }}!
   </h1>
-  <img class="logo" src="https://pbs.twimg.com/profile_images/536554033083715584/53H11Q-w_400x400.png">
+  <img appColor #refImg src="https://pbs.twimg.com/profile_images/536554033083715584/53H11Q-w_400x400.png">
+</div>
+
+<div style="text-align:center">
+  <button (click)="testViewChild()">Test ViewChild</button>
 </div>
 
 <ng-template ngFor let-cat [ngForOf]="cats" let-i="index">

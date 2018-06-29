@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { CatComponent } from './cat/cat.component';
+import { ColorDirective } from './color.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CatComponent
+    CatComponent,
+    ColorDirective
   ],
   imports: [
     BrowserModule

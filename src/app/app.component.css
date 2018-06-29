@@ -1,3 +1,17 @@
-.logo {
+.border-red {
   border: 5px solid #F1415A;
+}
+.border-blue {
+  border: 5px solid #0294c6;
+}
+
+.logo img {
+  width: 200px;
+  height: 200px;
+  transition: all 1s ease;
+}
+.border-effect {
+  width: 100px !important;
+  height: 100px !important;
+  border-width: 55px;
 }

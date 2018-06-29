@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
+  @ViewChild('refImg') refImg;
   title = 'app';
   cats = [
     {
@@ -24,5 +26,12 @@ export class AppComponent {
 
   imageClicked(event) {
     console.log(event);
+  }
+
+  testViewChild() {
+    this.refImg.nativeElement.classList.add('border-effect');
+    setTimeout(() => {
+      this.refImg.nativeElement.classList.remove('border-effect');
+    }, 1000);
   }
 }

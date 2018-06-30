@@ -14,7 +14,7 @@
 </div>
 
 <app-cat [url]="dog">
-  {{ 'Celui là n\'est pas un chat' | nbDog }}
+  {{ 'this.is.a.dog' | translate | nbDog }}
 </app-cat>
 
 <ng-template ngFor let-cat [ngForOf]="cats" let-i="index">

@@ -1,5 +1,6 @@
 import { Component, ViewEncapsulation, ViewChild } from '@angular/core';
 import { AnimalsService } from './animals.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,10 @@ export class AppComponent {
   cats = [];
   dog;
 
-  constructor(public animalsService: AnimalsService) {
+  constructor(public animalsService: AnimalsService, translate: TranslateService) {
+    translate.setDefaultLang('en');
+    translate.use('en');
+
     this.getANewDog();
 
     this.animalsService.getCats()

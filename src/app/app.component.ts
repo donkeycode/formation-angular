@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, ViewChild } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { AnimalsService } from './animals.service';
 
 @Component({
   selector: 'app-root',
@@ -10,24 +10,20 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent {
   @ViewChild('refImg') refImg;
   title = 'app';
-  cats = [
-    {
-      url: 'https://www.chewy.com/petcentral/wp-content/uploads/2018/05/abyssinian-cat-card.jpg',
-      name: 'chat mignon'
-    },
-    {
-      url: 'https://www.argospetinsurance.co.uk/assets/uploads/2017/12/cat-pet-animal-domestic-104827.jpeg',
-      name: 'chat encore mignon'
-    },
-    {
-      url: 'https://www.bluecross.org.uk/sites/default/files/assets/images/124044lpr.jpg',
-      name: 'chat toujours mignon'
-    },
-  ];
+  cats = [];
   dog;
 
-  constructor(private http: HttpClient) {
-    this.http.get('https://dog.ceo/api/breeds/image/random')
+  constructor(public animalsService: AnimalsService) {
+    this.getANewDog();
+
+    this.animalsService.getCats()
+    .then((cats: any) => {
+      this.cats = cats;
+    });
+  }
+
+  getANewDog() {
+    this.animalsService.getRandomDog()
     .subscribe((response) => {
       this.dog = response['message'];
     });

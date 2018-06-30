@@ -9,6 +9,10 @@
   <button mat-raised-button color="primary" (click)="testViewChild()">Test ViewChild</button>
 </div>
 
+<div style="text-align:center">
+  <button mat-raised-button color="secondary" (click)="getANewDog()">Get a new dog ({{ animalsService.numberOfDog}})</button>
+</div>
+
 <app-cat [url]="dog">
   Celui là n'est pas un chat
 </app-cat>

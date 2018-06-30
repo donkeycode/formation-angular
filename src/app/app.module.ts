@@ -9,12 +9,14 @@ import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
 
 import { HttpClientModule } from '@angular/common/http';
+import { NbDogPipe } from './nb-dog.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     CatComponent,
-    ColorDirective
+    ColorDirective,
+    NbDogPipe
   ],
   imports: [
     BrowserModule,

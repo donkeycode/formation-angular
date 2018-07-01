@@ -28,7 +28,9 @@ const appRoutes: Routes = [
         component: MoreAnimalsComponent
       }
     ]
-  },
+  }, {
+    path: 'turtle', loadChildren: './lazy/lazy.module#LazyModule'
+  }
 ];
 
 // AoT requires an exported function for factories

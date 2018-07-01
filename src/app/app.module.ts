@@ -18,6 +18,11 @@ import { AnimalsComponent } from './animals/animals.component';
 import { MoreAnimalsComponent } from './more-animals/more-animals.component';
 import { RaceGuard } from './race.guard';
 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 const appRoutes: Routes = [
   {
     path: '', component: AnimalsComponent,
@@ -62,7 +67,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
     RouterModule.forRoot(
       appRoutes,
-    )
+    ),
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,15 @@
+<div style="text-align:center">
+  <button mat-raised-button color="secondary" (click)="getANewDog()">Get a new dog ({{ animalsService.numberOfDog}})</button>
+</div>
+
+<app-cat [url]="dog">
+  {{ 'this.is.a.dog' | translate | nbDog }}
+</app-cat>
+
+<ng-template ngFor let-cat [ngForOf]="cats" let-i="index">
+  <app-cat [url]="cat.url" (clicked)="imageClicked($event)" [border]="i === 1 ? 'blue' : 'red'">
+    {{ cat.name }}
+  </app-cat>
+</ng-template>
+
+<router-outlet></router-outlet>

@@ -13,6 +13,24 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { NbDogPipe } from './nb-dog.pipe';
 
+import { RouterModule, Routes } from '@angular/router';
+import { AnimalsComponent } from './animals/animals.component';
+import { MoreAnimalsComponent } from './more-animals/more-animals.component';
+import { RaceGuard } from './race.guard';
+
+const appRoutes: Routes = [
+  {
+    path: '', component: AnimalsComponent,
+    children: [
+      {
+        path: 'animals/:race',
+        canActivate: [RaceGuard],
+        component: MoreAnimalsComponent
+      }
+    ]
+  },
+];
+
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
 	return new TranslateHttpLoader(http);
@@ -23,7 +41,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     CatComponent,
     ColorDirective,
-    NbDogPipe
+    NbDogPipe,
+    AnimalsComponent,
+    MoreAnimalsComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +57,10 @@ export function HttpLoaderFactory(http: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    RouterModule.forRoot(
+      appRoutes,
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]

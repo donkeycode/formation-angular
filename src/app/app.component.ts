@@ -1,5 +1,4 @@
 import { Component, ViewEncapsulation, ViewChild } from '@angular/core';
-import { AnimalsService } from './animals.service';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -11,30 +10,10 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent {
   @ViewChild('refImg') refImg;
   title = 'app';
-  cats = [];
-  dog;
 
-  constructor(public animalsService: AnimalsService, translate: TranslateService) {
+  constructor(translate: TranslateService) {
     translate.setDefaultLang('en');
     translate.use('en');
-
-    this.getANewDog();
-
-    this.animalsService.getCats()
-    .then((cats: any) => {
-      this.cats = cats;
-    });
-  }
-
-  getANewDog() {
-    this.animalsService.getRandomDog()
-    .subscribe((response) => {
-      this.dog = response['message'];
-    });
-  }
-
-  imageClicked(event) {
-    console.log(event);
   }
 
   testViewChild() {

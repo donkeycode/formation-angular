@@ -23,6 +23,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+
 const appRoutes: Routes = [
   {
     path: '', component: AnimalsComponent,
@@ -71,7 +74,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,6 +4,7 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { auth } from 'firebase';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -18,13 +19,37 @@ export class AppComponent {
   private itemsCollection: AngularFirestoreCollection<any>;
   private itemDoc: AngularFirestoreDocument<any>;
 
-  constructor(translate: TranslateService, db: AngularFirestore, public afAuth: AngularFireAuth) {
+  constructor(translate: TranslateService, public db: AngularFirestore, public afAuth: AngularFireAuth) {
     translate.setDefaultLang('en');
     translate.use('en');
     this.itemsCollection = db.collection('items');
-    this.items = this.itemsCollection.valueChanges();
+    this.items = this.itemsCollection.snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data();
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      }))
+    );
+  }
 
-    this.itemDoc = db.doc<any>('items/CkT8EQUO9uRX0d3waix5');
+  addItem(label) {
+    this.itemsCollection.add({ label: label });
+  }
+
+  updateItem(item) {
+    this.db.doc<any>(`items/${item.id}`).update({label: item.label });
+  }
+
+  removeItem(item) {
+    this.db.doc<any>(`items/${item.id}`).delete();
+  }
+
+  login() {
+    this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+  }
+
+  logout() {
+    this.afAuth.auth.signOut();
   }
 
   testViewChild() {
@@ -32,22 +57,5 @@ export class AppComponent {
     setTimeout(() => {
       this.refImg.nativeElement.classList.remove('border-effect');
     }, 1000);
-  }
-
-  addItem() {
-    this.itemsCollection.add({
-      label: 'label par defaut'
-    });
-  }
-
-  updateItem(label) {
-    this.itemDoc.update({ label: label });
-  }
-
-  login() {
-    this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
-  }
-  logout() {
-    this.afAuth.auth.signOut();
   }
 }

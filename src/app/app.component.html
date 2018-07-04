@@ -21,10 +21,11 @@
 <ul>
   <li class="text" *ngFor="let item of items | async">
     <input [(ngModel)]="item.label">
-    <button (click)="updateItem(item.label)">UPDATE</button>
+    <button (click)="updateItem(item)">UPDATE</button>
+    <button (click)="removeItem(item)">REMOVE</button>
   </li>
 </ul>
 
-<button (click)="addItem()">POST</button>
+<input #label><button (click)="addItem(label.value)">POST</button>
 
 <router-outlet></router-outlet>

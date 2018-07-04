@@ -1,5 +1,7 @@
 import { Component, ViewEncapsulation, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -10,10 +12,12 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent {
   @ViewChild('refImg') refImg;
   title = 'app';
+  items: Observable<any[]>;
 
-  constructor(translate: TranslateService) {
+  constructor(translate: TranslateService, db: AngularFirestore) {
     translate.setDefaultLang('en');
     translate.use('en');
+    this.items = db.collection('items').valueChanges();
   }
 
   testViewChild() {
